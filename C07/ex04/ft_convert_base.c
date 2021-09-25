@@ -1,31 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strcmp.c                                        :+:      :+:    :+:   */
+/*   ft_convert_base.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/19 00:25:28 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/19 00:33:34 by junekim          ###   ########.fr       */
+/*   Created: 2021/09/25 18:53:34 by junekim           #+#    #+#             */
+/*   Updated: 2021/09/25 18:54:06 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-int strcmp(char *s1,char *s2)
+#include<stdlib.h>
+
+char	*ft_convert_base(char *nbr, char *base_from, char *base_to)
 {
-	int i;
-	while(1)
-	{
-		if(s1[i] > s2[i])
-			return 1;
-		if(s1[i] < s2[i])
-			return -1;
-		else
-		{
-			if(s1[i]=='\0')
-				return 0;
-			i++;
-			continue;
-		}
-		i++;
-	}
+	
 }
