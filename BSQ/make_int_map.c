@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 16:16:38 by slyu              #+#    #+#             */
-/*   Updated: 2021/09/29 21:56:41 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 22:58:20 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,7 +97,7 @@ void	search_biggest(t_map *box)
 		x = 0;
 		while (++x + size - 1 <= box -> column_size && y + size - 1 <= box -> row_size)
 			while (check_possible(x, y, size, box -> int_map))
-			{	
+			{
 				memory[4] = 1;
 				memory[0] = x - 1;
 				memory[1] = y - 1;

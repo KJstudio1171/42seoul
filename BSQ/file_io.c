@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:21:16 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 21:33:18 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 22:25:49 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ void	print_map(t_map *map_arr, int i)
 	int	index;
 
 	index = 0;
+	if (map_arr[i].bool_box == 1)
+		return ;
 	if (map_arr[i].error != 1)
 	{
 		while (index < map_arr[i].row_size)

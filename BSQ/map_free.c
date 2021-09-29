@@ -6,11 +6,12 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:35:25 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 21:58:37 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 23:00:49 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "find_square.h"
+#include <stdio.h>
 
 void	map_inside_free(t_map *map_arr, int argc)
 {
@@ -38,9 +39,5 @@ void	map_inside_free(t_map *map_arr, int argc)
 
 void	map_free(t_map *map_arr, int argc)
 {
-	int	i;
-
-	i = 0;
-	while (i < argc - 1)
-		free(map_arr[i++]);
+	free(map_arr);
 }

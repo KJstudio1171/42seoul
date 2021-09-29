@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:42:40 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 21:07:39 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 22:16:04 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,4 +83,18 @@ void	ft_strcpy(char *dest, char *src, int buf_size, int size)
 		dest[i] = src[i];
 		i++;
 	}
+}
+
+void	expand_buf(char **stdin_file, int file_buf_size, int size)
+{
+	char	*expand;
+	char	*tmp;
+
+	expand = (char *) malloc(sizeof(char) * file_buf_size * size);
+	if (!expand)
+		malloc_error();
+	ft_strcpy(expand, *stdin_file, file_buf_size, size - 1);
+	tmp = *stdin_file;
+	*stdin_file = expand;
+	free(tmp);
 }

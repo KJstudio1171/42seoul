@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:44:29 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 22:13:35 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 22:58:15 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,10 +33,11 @@ char	*read_stdin_file(int *file_len, char *buf)
 			expand_buf(&stdin_file, file_buf_size, ++n);
 		read_number = read(0, buf, 1);
 		stdin_file[i++] = buf[0];
-		(*file_len)++;
+		if ((*file_len)++ > 2147483647)
+			overflow_error();
+		if (read_number == -1)
+			file_read_error();
 	}
-	if (read_number == -1)
-		file_read_error();
 	return (stdin_file);
 }
 
@@ -53,17 +54,18 @@ int	read_info(char *str, t_map *map_arr, int i)
 	map_arr[i].obs = str[--index];
 	map_arr[i].road = str[--index];
 	map_arr[i].row_size = 0;
-	index = 0;
-	while (index < info_len - 3)
+	index = -1;
+	while (++index < info_len - 3)
 	{
-		if (str[index] >= '0' && str[index] <= '9')	//??
+		if (str[index] >= '0' && str[index] <= '9')
 		{
+			if (map_arr[i].row_size > 2147483647)
+				overflow_error();
 			map_arr[i].row_size *= 10;
 			map_arr[i].row_size += str[index] - '0';
 		}
 		else
 			info_error();
-		index++;
 	}
 	return (info_len);
 }
