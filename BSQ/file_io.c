@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:21:16 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 16:24:42 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 17:42:43 by junekim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ t_map	*open_argv(int argc, char **argv) // argc==1일때
 	if (argc == 1)
 	{
 		map_arr = (t_map *)malloc(sizeof(t_map));
-		open_sti_file(argv, map_arr);
+		open_stdin_file(argv, map_arr);
 	}
 	else
 	{
@@ -62,7 +62,7 @@ void	open_file(char **argv, int i, t_map *map_arr)
 	fd = open(argv[i + 1], O_RDONLY);
 	if (fd < 0)
 		file_open_error();
-	file_str_type = read_file(fd, i, file_size);
+	file_str_type = read_file(fd, file_size);
 	map_start = read_info(file_str_type, map_arr, i);
 	if (file_size <= map_start + 1)
 		map_error();
@@ -70,18 +70,15 @@ void	open_file(char **argv, int i, t_map *map_arr)
 	close(fd);
 }
 
-void	open_sti_file(char **argv, t_map *map_arr)
+void	open_stdin_file(char **argv, t_map *map_arr)
 {
-	int		file_size;
 	int		map_start;
 	char	*file_str_type;
 
-	file_size = find_file_size(0);
-	file_str_type = read_file(0, file_size);
-	printf("%s", file_str_type);
+	file_str_type = read_stdin_file();
 	map_start = read_info(file_str_type, map_arr, 0);
-	if (file_size <= map_start + 1)
-		map_error();
+	//if (file_size <= map_start + 1)
+		//map_error();
 	read_map(file_str_type + map_start, map_arr, 0);
 }
 
@@ -105,18 +102,16 @@ int	find_file_size(int fd)
 	while (read_number > 0)
 	{
 		read_number = read(fd, buf, sizeof(buf));
-		for(int i = 0; i < read_number; i++)
-			printf("%d", buf[i]);
 		file_size += read_number;
 	}
 	if (read_number == -1)
 		file_read_error();
+	free(buf);
 	return (file_size);
 }
 
 char	*read_file(int fd, int file_size)
 {
-	int		column_len;
 	char	*buf;
 	int		read_number;
 
@@ -129,13 +124,63 @@ char	*read_file(int fd, int file_size)
 	return (buf);
 }
 
+void	ft_strcpy(char* dest, char *src, int buf_size, int size)
+{
+	int	i;
+
+	i = 0;
+	while (i < buf_size * size)
+	{
+		dest[i] = src[i];
+		i++;
+	}
+}
+
+void	expand_buf(char **stdin_file,int file_size, int size)
+{
+	char	*expand;
+	char	*tmp;
+
+	expand = (char *) malloc(sizeof(char) * file_size * size);
+	ft_strcpy(expand, *stdin_file, file_size, size - 1);
+	tmp = *stdin_file;
+	*stdin_file = expand;
+	free(tmp);
+}
+
+char	*read_stdin_file(void)
+{
+	char	buf[1];
+	char	*stdin_file;
+	int		read_number;
+	int		file_size;
+	int		i;
+	int		n;
+
+	file_size = 128;
+	stdin_file = (char *)malloc(sizeof (char) * file_size);
+	i = 0;
+	n = 1;
+	if (!stdin_file)
+		malloc_error();
+	while (read_number > 0)
+	{
+		if (i == file_size * n)
+			expand_buf(&stdin_file, file_size, ++n);
+		read_number = read(0, buf, 1);
+		stdin_file[i++] = buf[0];
+	}
+	if (read_number == -1)
+		file_read_error();
+	return (stdin_file);
+}
+
 int	read_info(char *str, t_map *map_arr, int i)
 {
 	int	info_len;
 	int	index;
 
 	info_len = line_len(str);
-	printf("%d", info_len);
 	index = info_len;
 	if (index < 4)
 		info_error();
