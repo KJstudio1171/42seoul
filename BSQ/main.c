@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 14:39:37 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 17:45:34 by junekim          ###   ########.fr       */
+/*   Updated: 2021/09/29 20:32:22 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	main(int argc, char **argv)
 	map_arr = open_argv(argc, argv);
 	if (argc == 1)
 	{
+		if (map_arr[0].error == 1)
+			return (0);
 		make_int_map(map_arr);
 		search_biggest(map_arr);
 		write(1, "\n", 1);
@@ -28,6 +30,11 @@ int	main(int argc, char **argv)
 	}
 	while (i < argc - 1)
 	{
+		if (map_arr[i].error == 1)
+		{
+			i++;
+			continue ;
+		}
 		make_int_map(&map_arr[i]);
 		search_biggest(&map_arr[i++]);
 	}
