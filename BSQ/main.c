@@ -6,11 +6,12 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 14:39:37 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 22:21:37 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 23:38:00 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "find_square.h"
+#include <stdio.h>
 
 int	main(int argc, char **argv)
 {
