@@ -6,14 +6,11 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 16:16:38 by slyu              #+#    #+#             */
-/*   Updated: 2021/09/29 15:28:58 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 21:49:33 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "map.h"
-
-void	plus_one(int x, int y, t_map *box);
-void	draw_in_map(int	*memory, t_map *box);
+#include "find_square.h"
 
 void	initialize_int_map(t_map *box)
 {
@@ -90,35 +87,30 @@ void	search_biggest(t_map *box)
 	int	x;
 	int	y;
 	int	size;
-	int	memory[3];
-	int	check;
+	int	memory[4];
 
-	x = 1;
 	y = 1;
 	size = 1;
-	while (y + size <= box -> row_size)
+	memory[4] = 0;
+	while (y + size - 1 <= box -> row_size)
 	{
-		while (x + size <= box -> column_size && y + size <= box -> row_size)
-		{
-			check = 0;
+		x = 0;
+		while (++x + size - 1 <= box -> column_size && y + size - 1 <= box -> row_size)
 			while (check_possible(x, y, size, box -> int_map))
 			{	
-				check = 1;
-				size++;
-				if (y + size > box -> row_size || x + size > box -> column_size)
-					break ;
-			}
-			if (check)
-			{
+				memory[4] = 1;
 				memory[0] = x - 1;
 				memory[1] = y - 1;
-				memory[2] = size - 1;
+       				memory[2] = size;
+				size++;
+				if (y + size - 1 > box -> row_size 
+				|| x + size - 1 > box -> column_size)
+					break ;
 			}
-			x++;
-		}
 		y++;
 	}
-	draw_in_map(memory, box);
+	if (memory[4])
+		draw_in_map(memory, box);
 }
 
 void	draw_in_map(int	*memory, t_map *box)

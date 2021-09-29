@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:44:29 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 21:12:03 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 21:50:34 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ char	*read_stdin_file(int *file_len, char *buf)
 
 	file_buf_size = 128;
 	stdin_file = (char *)malloc(sizeof (char) * file_buf_size);
-	if (stdin_file)
+	if (!stdin_file)
 		malloc_error();
 	i = 0;
 	n = 1;
@@ -98,10 +98,10 @@ void	read_map(char *str, t_map *map_arr, int i)
 		return ;
 	}
 	map_arr[i].map = (char **)malloc(sizeof(char *) * r_size);
-	if(!map_arr[i].map)
+	if (!map_arr[i].map)
 		malloc_error();
 	map_arr[i].map[0] = (char *)malloc(sizeof(char) * r_size * c_size);
-	if(!map_arr[i].map[0])
+	if (!map_arr[i].map[0])
 		malloc_error();
 	while (index <= r_size)
 	{
@@ -113,10 +113,10 @@ void	read_map(char *str, t_map *map_arr, int i)
 	}
 	index = 1;
 	map_arr[i].int_map = (int **)malloc(sizeof(int *) * (r_size + 1));
-	if(!map_arr[i].int_map)
+	if (!map_arr[i].int_map)
 		malloc_error();
 	map_arr[i].int_map[0] = (int *)malloc(sizeof(int) * (r_size + 1) * (c_size + 1));
-	if(!map_arr[i].int_map[0])
+	if (!map_arr[i].int_map[0])
 		malloc_error();
 	while (index <= r_size + 1)
 	{
