@@ -6,14 +6,14 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:21:16 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 20:31:40 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 20:36:37 by junekim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "find_square.h"
 #include <stdio.h>
 
-t_map	*open_argv(int argc, char **argv) // argc==1일때
+t_map	*open_argv(int argc, char **argv)
 {
 	t_map	*map_arr;
 	int		i;
