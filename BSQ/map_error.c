@@ -1,18 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_able.h                                          :+:      :+:    :+:   */
+/*   map_error.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/29 20:38:00 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 20:57:57 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/09/29 21:09:22 by junekim           #+#    #+#             */
+/*   Updated: 2021/09/29 21:09:45 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IS_ABLE_H
-# define IS_ABLE_H
+#include "find_square.h"
 
-int	is_printable(char ch);
-int	is_map(t_map *map_arr, int i);
-#endif
+void	map_error(t_map *map_arr, int i)
+{	
+	if (map_arr[i].error != 1)
+		write(1, "map_error\n", 10);
+	map_arr[i].error = 1;
+}

@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_able.h                                          :+:      :+:    :+:   */
+/*   map_free.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/29 20:38:00 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 20:57:57 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/09/29 21:21:07 by junekim           #+#    #+#             */
+/*   Updated: 2021/09/29 21:31:14 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef IS_ABLE_H
-# define IS_ABLE_H
+#ifndef MAP_FREE_H
+# define MAP_FREE_H
+# include "find_square.h"
 
-int	is_printable(char ch);
-int	is_map(t_map *map_arr, int i);
+void	map_inside_free(t_map *map_arr, int argc);
+void	map_free(t_map *map_arr);
 #endif

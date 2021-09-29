@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:15:50 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 20:20:41 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 21:22:58 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@
 # include <fcntl.h>
 # include "map.h"
 # include "error.h"
-# include "file_io.h"
 # include "make_int_map.h"
+# include "is_able.h"
+# include "file_io.h"
+# include "map_free.h"
 #endif

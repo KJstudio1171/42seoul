@@ -1,43 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   map_init.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/29 15:19:58 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 21:09:41 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/09/29 21:23:18 by junekim           #+#    #+#             */
+/*   Updated: 2021/09/29 21:28:52 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "find_square.h"
 
-void	info_error(void)
+void	init_map(t_map *map_arr, int argc)
 {
-	write(1, "info_error\n", 11);
-	exit(1);
-}
+	int	i;
 
-void	file_open_error(void)
-{
-	write(1, "file_open_error\n", 16);
-	exit(1);
-}
-
-void	file_read_error(void)
-{
-	write(1, "file_read_error\n", 16);
-	exit(1);
-}
-
-void	malloc_error(void)
-{
-	write(1, "malloc_error\n", 13);
-	exit(1);
-}
-
-void	overflow_error(void)
-{	
-	write(1, "overflow_error\n", 15);
-	exit(1);
+	i = 0;
+	while (i < argc - 1)
+	{
+		map_arr[i].map = NULL;
+		map_arr[i].int_map = NULL;
+		map_arr[i].info_len = -1;
+		map_arr[i].file_len = -1;
+		map_arr[i].column_size = -1;
+		map_arr[i].row_size = -1;
+		map_arr[i].road = '\0';
+		map_arr[i].obs = '\0';
+		map_arr[i].square = '\0';
+		map_arr[i].bool_box = 0;
+		map_arr[i++].error = 0;
+	}
 }

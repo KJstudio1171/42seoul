@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:23:06 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 19:59:20 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 21:32:21 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,4 +27,5 @@ typedef struct t_map
 	int		bool_box;
 	int		error;
 }	t_map;
+void	init_map(t_map *map_arr, int argc);
 #endif
