@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 20:35:25 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 21:34:51 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 21:58:37 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,11 @@ void	map_inside_free(t_map *map_arr, int argc)
 	}
 }
 
-void	map_free(t_map *map_arr)
+void	map_free(t_map *map_arr, int argc)
 {
-	free(map_arr);
+	int	i;
+
+	i = 0;
+	while (i < argc - 1)
+		free(map_arr[i++]);
 }

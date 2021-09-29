@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 21:21:07 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 21:31:14 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 21:59:39 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 # include "find_square.h"
 
 void	map_inside_free(t_map *map_arr, int argc);
-void	map_free(t_map *map_arr);
+void	map_free(t_map *map_arr, int argc);
 #endif

@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 16:16:38 by slyu              #+#    #+#             */
-/*   Updated: 2021/09/29 21:49:33 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 21:56:41 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,7 +101,7 @@ void	search_biggest(t_map *box)
 				memory[4] = 1;
 				memory[0] = x - 1;
 				memory[1] = y - 1;
-       				memory[2] = size;
+       			memory[2] = size;
 				size++;
 				if (y + size - 1 > box -> row_size 
 				|| x + size - 1 > box -> column_size)

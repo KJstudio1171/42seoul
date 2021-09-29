@@ -11,7 +11,7 @@
       "environment": [],
       "program": "/home/june1171/KJstudio/42seoul/BSQ/build/Debug/outDebug",
       "internalConsoleOptions": "openOnSessionStart",
-      "MIMode": "lldb",
+      "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",
       "externalConsole": false,
       "setupCommands": [
