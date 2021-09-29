@@ -6,22 +6,31 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:21:16 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 15:53:54 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2021/09/29 16:24:42 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "find_square.h"
+#include <stdio.h>
 
 t_map	*open_argv(int argc, char **argv) // argc==1일때
 {
 	t_map	*map_arr;
 	int		i;
 
-	map_arr = (t_map *)malloc(sizeof(t_map) * (argc - 1));
-	i = 0;
-	while (i < argc - 1)
+	if (argc == 1)
 	{
-		open_file(argv, i++, map_arr);
+		map_arr = (t_map *)malloc(sizeof(t_map));
+		open_sti_file(argv, map_arr);
+	}
+	else
+	{
+		map_arr = (t_map *)malloc(sizeof(t_map) * (argc - 1));
+		i = 0;
+		while (i < argc - 1)
+		{
+			open_file(argv, i++, map_arr);
+		}
 	}
 	return (map_arr);
 }
@@ -68,7 +77,8 @@ void	open_sti_file(char **argv, t_map *map_arr)
 	char	*file_str_type;
 
 	file_size = find_file_size(0);
-	file_str_type = read_file(0, 0, file_size);
+	file_str_type = read_file(0, file_size);
+	printf("%s", file_str_type);
 	map_start = read_info(file_str_type, map_arr, 0);
 	if (file_size <= map_start + 1)
 		map_error();
@@ -83,16 +93,6 @@ char	*malloc_line(int size)
 	return (buffer);
 }
 
-int	strlen(char *str)
-{
-	int	len;
-
-	len = 0;
-	while (str[len])
-		len++;
-	return (len);
-}
-
 int	find_file_size(int fd)
 {
 	long long	file_size;
@@ -105,6 +105,8 @@ int	find_file_size(int fd)
 	while (read_number > 0)
 	{
 		read_number = read(fd, buf, sizeof(buf));
+		for(int i = 0; i < read_number; i++)
+			printf("%d", buf[i]);
 		file_size += read_number;
 	}
 	if (read_number == -1)
@@ -112,7 +114,7 @@ int	find_file_size(int fd)
 	return (file_size);
 }
 
-char	*read_file(int fd, int i, int file_size)
+char	*read_file(int fd, int file_size)
 {
 	int		column_len;
 	char	*buf;
@@ -133,6 +135,7 @@ int	read_info(char *str, t_map *map_arr, int i)
 	int	index;
 
 	info_len = line_len(str);
+	printf("%d", info_len);
 	index = info_len;
 	if (index < 4)
 		info_error();
