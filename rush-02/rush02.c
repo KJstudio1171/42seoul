@@ -22,7 +22,7 @@ int main()
 	int i = -1;
 	while(read(fp,number,691))
 		len++;
-	while(++i < 692)
+	while(i < 692)
 	printf("%d", number[690]);
 	if(close(fp) == -1)
 		printf("error");
