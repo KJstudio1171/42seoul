@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:22:31 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 16:56:36 by junekim          ###   ########.fr       */
+/*   Updated: 2021/09/29 17:58:01 by junekim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,6 @@ void	read_map(char *str, t_map *map_arr, int i);
 char	*copy_map(char *str, t_map *map_arr, int i, int row);
 int		line_len(char *str);
 void	open_stdin_file(char **argv, t_map *map_arr);
-char	*read_stdin_file(void);
+char	*read_stdin_file(int *file_size);
 void	print_map(t_map *map_arr, int i);//삭제요망
 #endif

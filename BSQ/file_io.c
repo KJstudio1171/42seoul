@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/29 15:21:16 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 17:42:43 by junekim          ###   ########.fr       */
+/*   Updated: 2021/09/29 18:11:37 by junekim          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,9 +73,11 @@ void	open_file(char **argv, int i, t_map *map_arr)
 void	open_stdin_file(char **argv, t_map *map_arr)
 {
 	int		map_start;
+	int		file_size;
 	char	*file_str_type;
 
-	file_str_type = read_stdin_file();
+	file_str_type = read_stdin_file(&file_size);
+	printf(" %d ",file_str_type[file_size - 1]);
 	map_start = read_info(file_str_type, map_arr, 0);
 	//if (file_size <= map_start + 1)
 		//map_error();
@@ -136,39 +138,41 @@ void	ft_strcpy(char* dest, char *src, int buf_size, int size)
 	}
 }
 
-void	expand_buf(char **stdin_file,int file_size, int size)
+void	expand_buf(char **stdin_file,int file_buf_size, int size)
 {
 	char	*expand;
 	char	*tmp;
 
-	expand = (char *) malloc(sizeof(char) * file_size * size);
-	ft_strcpy(expand, *stdin_file, file_size, size - 1);
+	expand = (char *) malloc(sizeof(char) * file_buf_size * size);
+	ft_strcpy(expand, *stdin_file, file_buf_size, size - 1);
 	tmp = *stdin_file;
 	*stdin_file = expand;
 	free(tmp);
 }
 
-char	*read_stdin_file(void)
+char	*read_stdin_file(int *file_size)
 {
 	char	buf[1];
 	char	*stdin_file;
 	int		read_number;
-	int		file_size;
+	int		file_buf_size;
 	int		i;
 	int		n;
 
-	file_size = 128;
-	stdin_file = (char *)malloc(sizeof (char) * file_size);
+	file_buf_size = 128;
+	stdin_file = (char *)malloc(sizeof (char) * file_buf_size);
 	i = 0;
 	n = 1;
+	read_number = 1;
 	if (!stdin_file)
 		malloc_error();
 	while (read_number > 0)
 	{
-		if (i == file_size * n)
-			expand_buf(&stdin_file, file_size, ++n);
+		if (i == file_buf_size * n)
+			expand_buf(&stdin_file, file_buf_size, ++n);
 		read_number = read(0, buf, 1);
 		stdin_file[i++] = buf[0];
+		(*file_size)++;
 	}
 	if (read_number == -1)
 		file_read_error();
