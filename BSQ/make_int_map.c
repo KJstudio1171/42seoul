@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   make_int_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: slyu <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/28 16:16:38 by slyu              #+#    #+#             */
-/*   Updated: 2021/09/29 00:53:32 by slyu             ###   ########.fr       */
+/*   Updated: 2021/09/29 15:28:58 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_map.h"
+#include "map.h"
 
-void	plus_one(int x, int y,t_map *box);
+void	plus_one(int x, int y, t_map *box);
 void	draw_in_map(int	*memory, t_map *box);
 
 void	initialize_int_map(t_map *box)
@@ -23,15 +23,15 @@ void	initialize_int_map(t_map *box)
 	x = 0;
 	y = 0;
 	while (y <= box -> row_size)
+	{
+		x = 0;
+		while (x <= box -> column_size)
 		{
-				x = 0;
-				while (x <= box -> column_size)
-				{
-					box -> int_map[y][x] = 0;
-					x++;
-				}
-				y++;
+			box -> int_map[y][x] = 0;
+			x++;
 		}
+		y++;
+	}
 }
 
 void	make_int_map(t_map *box)
@@ -85,7 +85,7 @@ int	check_possible(int x, int y, int size, int **int_map)
 		return (0);
 }
 
-void search_biggest(t_map *box)
+void	search_biggest(t_map *box)
 {
 	int	x;
 	int	y;

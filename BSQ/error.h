@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.h                                         :+:      :+:    :+:   */
+/*   error.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 14:59:05 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 11:21:39 by junekim          ###   ########.fr       */
+/*   Created: 2021/09/29 15:17:57 by junekim           #+#    #+#             */
+/*   Updated: 2021/09/29 15:18:10 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_ERROR_H
-# define FT_ERROR_H
+#ifndef ERROR_H
+# define ERROR_H
 
 void	ft_info_error(void);
 void	ft_file_open_error(void);

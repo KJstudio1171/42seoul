@@ -1,17 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.h                                           :+:      :+:    :+:   */
+/*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <junekim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/28 14:38:26 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/28 16:19:38 by junekim          ###   ########.fr       */
+/*   Created: 2021/09/29 15:23:06 by junekim           #+#    #+#             */
+/*   Updated: 2021/09/29 15:23:11 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MAP_H
-# define FT_MAP_H
+#ifndef MAP_H
+# define MAP_H
+
 typedef struct t_map
 {
 	char	**map;

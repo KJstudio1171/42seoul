@@ -1,22 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   make_int_map.h                                     :+:      :+:    :+:   */
+/*   find_square.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/29 15:12:40 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/29 15:23:49 by junekim          ###   ########seoul.kr  */
+/*   Created: 2021/09/29 15:15:50 by junekim           #+#    #+#             */
+/*   Updated: 2021/09/29 15:24:04 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef MAKE_INT_MAP_H
-# define MAKE_INT_MAP_H
+#ifndef FIND_SQUARE_H
+# define FIND_SQUARE_H
+# include "error.h"
+# include "file_io.h"
 # include "map.h"
-
-void	plus_one(int x, int y, t_map *box);
-void	make_int_map(t_map *box);
-int		check_possible(int x, int y, int size, char **int_map);
-void	search_biggest(t_map *box);
-void	draw_in_map(int	*map, t_map *box);
+# include "make_int_map.h"
+# include <unistd.h>
+# include <stdlib.h>
+# include <fcntl.h>
 #endif
