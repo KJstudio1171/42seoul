@@ -1,2 +1,0 @@
-export $USER
-echo $USER
