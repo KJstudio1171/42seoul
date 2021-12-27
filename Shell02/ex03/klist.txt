@@ -1,0 +1,5 @@
+Credentials cache: API:E4B61C2E-65C1-4F67-9C37-DC255A6F7FB7
+        Principal: junekim@42SEOUL.KR
+
+  Issued                Expires               Principal
+Sep  9 00:40:02 2021  Sep  9 10:39:54 2021  krbtgt/42SEOUL.KR@42SEOUL.KR
