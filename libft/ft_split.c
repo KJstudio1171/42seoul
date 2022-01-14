@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 16:50:58 by junekim           #+#    #+#             */
-/*   Updated: 2021/12/31 14:07:23 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/15 03:35:18 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,12 @@ int	split_size_function(char *s, char c)
 	int		split_size;
 	int		i;
 
+	if (!*s)
+		return (0);
 	split_size = 0;
 	i = 0;
+	while (s[i] && s[i] == c)
+		i++;
 	while (s[i])
 	{	
 		while (s[i] == c)
@@ -46,16 +50,23 @@ char	*str_malloc(char *s, char c)
 	return (arr);
 }
 
-void	split_free(char	**split, int i)
+char	**split_free(char	**split)
 {
-	int	j;
+	int	i;
 
-	j = 0;
-	while (j < i)
+	i = 0;
+	while (split[i])
 	{
-		free(split[j++]);
+		free(split[i++]);
 	}
 	free(split);
+	return (NULL);
+}
+
+void	var_allocate(int split_size, int *i, char ***split)
+{
+	*i = 0;
+	*split = (char **)malloc(sizeof(char *) * (split_size + 1));
 }
 
 char	**ft_split(char const *s, char c)
@@ -64,9 +75,10 @@ char	**ft_split(char const *s, char c)
 	int		split_size;
 	int		i;
 
+	if (!s)
+		return (NULL);
 	split_size = split_size_function((char *)s, c);
-	i = 0;
-	split = (char **)malloc(sizeof(char *) * (split_size + 1));
+	var_allocate(split_size, &i, &split);
 	if (!split)
 		return (NULL);
 	while (*s)
@@ -74,11 +86,10 @@ char	**ft_split(char const *s, char c)
 		while (*s == c)
 			s++;
 		if (*s)
-			split[i++] = str_malloc((char *)s, c);
-		if (split[i] == NULL)
 		{
-			split_free(split, i);
-			return (NULL);
+			split[i] = str_malloc((char *)s, c);
+			if (split[i++] == NULL)
+				return (split_free(split));
 		}
 		while (*s != c && *s)
 			s++;

@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 14:20:02 by junekim           #+#    #+#             */
-/*   Updated: 2021/12/30 05:02:51 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/14 22:47:16 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,12 @@ int	ft_atoi(const char *nptr)
 
 	digit = 0;
 	i = 0;
+	neg = 0;
 	while (is_space(nptr[i]))
 		i++;
 	if (nptr[i] == '-' || nptr[i] == '+')
-	{
-		if (nptr[i] == '-')
+		if (nptr[i++] == '-')
 			neg = 1;
-		i++;
-	}
 	while (ft_isdigit(nptr[i]))
 	{
 		digit *= 10;

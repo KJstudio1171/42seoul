@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/28 06:44:25 by junekim           #+#    #+#             */
-/*   Updated: 2021/12/30 11:23:56 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/14 22:28:35 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,6 @@ void	*ft_bzero(void *ptr, size_t num)
 
 	buf = (unsigned char *) ptr;
 	while (num--)
-		*buf = 0;
+		*buf++ = 0;
 	return (ptr);
 }

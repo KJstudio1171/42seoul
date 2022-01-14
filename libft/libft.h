@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:09:39 by junekim           #+#    #+#             */
-/*   Updated: 2021/12/30 15:11:35 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/14 22:31:27 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,12 +32,12 @@ size_t	ft_strlcat(char *dst, const char *src, size_t size);
 int		ft_toupper(int c);
 int		ft_tolower(int c);
 char	*ft_strchr(const char *str, int c);
-char	*strrchr(const char *str, int c);
-void	*memchr(const void *ptr, int value, size_t num);
+char	*ft_strrchr(const char *str, int c);
+void	*ft_memchr(const void *ptr, int value, size_t num);
 int		ft_memcmp(const void *ptr1, const void *ptr2, size_t num);
 char	*ft_strnstr(const char *big, const char *little, size_t len);
 int		ft_atoi(const char *nptr);
-void	*calloc(size_t n, size_t size);
+void	*ft_calloc(size_t n, size_t size);
 char	*ft_strdup(const char *src);
 
 char	*ft_substr(char const *s, unsigned int start, size_t len);

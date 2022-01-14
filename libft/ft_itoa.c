@@ -6,16 +6,19 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 12:16:39 by junekim           #+#    #+#             */
-/*   Updated: 2021/12/31 14:11:35 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/15 00:27:03 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	itoa_malloc(int n, int *i, char *str)
+char	*itoa_malloc(int n, int *i)
 {
 	int		size;
+	char	*str;
 
+	if (n == 0)
+		return (ft_strdup("0"));
 	size = 0;
 	while (n)
 	{
@@ -24,8 +27,11 @@ void	itoa_malloc(int n, int *i, char *str)
 	}
 	*i += size;
 	str = (char *)malloc(sizeof(char) * (*i + 1));
+	if (!str)
+		return (NULL);
 	if (str)
 		str[(*i)--] = '\0';
+	return (str);
 }
 
 char	*ft_itoa(int n)
@@ -35,21 +41,20 @@ char	*ft_itoa(int n)
 	int		i;
 
 	neg = 0;
-	str = NULL;
 	if (n == -2147483648)
-		return ("-2147483648");
+		return (ft_strdup("-2147483648"));
 	if (n < 0)
 	{
 		neg = 1;
 		n *= -1;
 	}
 	i = neg ;
-	itoa_malloc(n, &i, str);
+	str = itoa_malloc(n, &i);
 	if (!str)
 		return (NULL);
 	while (n)
 	{
-		str[i--] = (n % 10) - '0';
+		str[i--] = (n % 10) + '0';
 		n /= 10;
 	}
 	if (neg == 1)
