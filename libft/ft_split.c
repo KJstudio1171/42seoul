@@ -6,13 +6,13 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/26 16:50:58 by junekim           #+#    #+#             */
-/*   Updated: 2022/01/15 03:35:18 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/16 18:00:33 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	split_size_function(char *s, char c)
+static int	split_size_function(char *s, char c)
 {
 	int		split_size;
 	int		i;
@@ -35,7 +35,7 @@ int	split_size_function(char *s, char c)
 	return (split_size);
 }
 
-char	*str_malloc(char *s, char c)
+static char	*str_malloc(char *s, char c)
 {
 	int		len;
 	char	*arr;
@@ -50,7 +50,7 @@ char	*str_malloc(char *s, char c)
 	return (arr);
 }
 
-char	**split_free(char	**split)
+static char	**split_free(char	**split)
 {
 	int	i;
 
@@ -63,7 +63,7 @@ char	**split_free(char	**split)
 	return (NULL);
 }
 
-void	var_allocate(int split_size, int *i, char ***split)
+static void	var_allocate(int split_size, int *i, char ***split)
 {
 	*i = 0;
 	*split = (char **)malloc(sizeof(char *) * (split_size + 1));

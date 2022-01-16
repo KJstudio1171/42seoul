@@ -6,13 +6,13 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 15:02:42 by junekim           #+#    #+#             */
-/*   Updated: 2022/01/15 01:07:01 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/16 18:00:14 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	write_nbr(int n, int fd)
+static void	write_nbr(int n, int fd)
 {
 	char	*nbr;
 

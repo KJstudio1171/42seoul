@@ -6,13 +6,13 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/30 12:16:39 by junekim           #+#    #+#             */
-/*   Updated: 2022/01/15 00:27:03 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/16 17:59:58 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*itoa_malloc(int n, int *i)
+static char	*itoa_malloc(int n, int *i)
 {
 	int		size;
 	char	*str;

@@ -6,13 +6,13 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 14:20:02 by junekim           #+#    #+#             */
-/*   Updated: 2022/01/14 22:47:16 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/16 17:59:36 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	is_space(char ch)
+static int	is_space(char ch)
 {
 	if (ch == '\t' || ch == '\n' || ch == '\v' || ch == '\f'
 		|| ch == '\r' || ch == ' ')
@@ -20,7 +20,7 @@ int	is_space(char ch)
 	return (0);
 }
 
-int	is_not_overflow(long long digit, int neg, const char *nptr)
+static int	is_not_overflow(long long digit, int neg, const char *nptr)
 {
 	if (neg == 1)
 	{

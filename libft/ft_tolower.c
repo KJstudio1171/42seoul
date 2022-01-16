@@ -5,14 +5,14 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/28 17:58:40 by junekim           #+#    #+#             */
-/*   Updated: 2022/01/15 00:16:51 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/01/16 16:27:09 by junekim           #+#    #+#             */
+/*   Updated: 2022/01/16 16:29:38 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_tolower(int c)
 {
-	if ('A' <= c && c <= 'Z')
+	if (('A' <= c) && ('Z' >= c))
 		return (c - 'A' + 'a');
 	return (c);
 }

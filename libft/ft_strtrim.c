@@ -6,13 +6,13 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/27 14:44:44 by junekim           #+#    #+#             */
-/*   Updated: 2022/01/15 02:06:40 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/16 18:01:02 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	is_set(char const c, char const *set)
+static size_t	is_set(char const c, char const *set)
 {
 	while (*set)
 		if (c == *(set++))
