@@ -6,13 +6,13 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/16 16:27:09 by junekim           #+#    #+#             */
-/*   Updated: 2022/01/16 16:29:38 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/01/18 16:24:14 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 int	ft_tolower(int c)
 {
-	if (('A' <= c) && ('Z' >= c))
-		return (c - 'A' + 'a');
+	if ((65 <= c) && (90 >= c))
+		return (c + 32);
 	return (c);
 }
