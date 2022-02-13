@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: junekim <junekim@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/14 19:25:03 by junekim           #+#    #+#             */
-/*   Updated: 2021/09/16 16:12:24 by junekim          ###   ########.fr       */
+/*   Updated: 2022/02/04 02:26:22 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ void	ft_write(int *nb)
 	write(1, b, i);
 }
 
-void	ft_putnbr(int	nb)
+void	ft_putnbr(int nb)
 {
 	int		sign;
 
