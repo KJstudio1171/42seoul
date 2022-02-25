@@ -1,31 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/30 14:44:00 by junekim           #+#    #+#             */
-/*   Updated: 2022/02/13 18:33:54 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/02/13 17:28:38 by junekim           #+#    #+#             */
+/*   Updated: 2022/02/20 20:03:29 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	int		i;
-	char	*str;
+# include <unistd.h>
+# include <stdlib.h>
 
-	i = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s) + 1));
-	if (!str)
-		return (NULL);
-	while (s[i])
-	{
-		str[i] = (*f)(i, s[i]);
-		i++;
-	}
-	str[i] = s[i];
-	return (str);
-}
+char	*ft_strchr(const char *str, int c);
+size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
+size_t	ft_strlcat(char *dst, const char *src, size_t size);
+
+char	*ft_strjoin(char *s1, char const *s2);
+char	*ft_strdup(const char *src);
+size_t	ft_strlen(const char *str);
+#endif
