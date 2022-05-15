@@ -1,27 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_printf_utils1.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 17:28:38 by junekim           #+#    #+#             */
-/*   Updated: 2022/03/21 00:47:21 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/05/04 14:42:29 by junekim           #+#    #+#             */
+/*   Updated: 2022/05/04 17:40:06 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "ft_printf.h"
 
-# include <unistd.h>
-# include <stdlib.h>
+size_t	ft_strlen(const char *str)
+{
+	size_t	len;
 
-char	*ft_strchr(const char *str, int c);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
+	len = 0;
+	while (*str++)
+		len++;
+	return (len);
+}
 
-char	*ft_strjoin(char *s1, char const *s2);
-char	*ft_strdup(const char *src);
-size_t	ft_strlen(const char *str);
-char	*get_next_line(int fd);
-#endif
+void	ft_putstr(char *s, int *num)
+{
+	if (s == NULL)
+		counter_write(1, "(null)", 6, num);
+	else
+		counter_write(1, s, ft_strlen(s), num);
+}
+
+void	ft_putchar(char c, int *num)
+{
+	counter_write(1, &c, 1, num);
+}

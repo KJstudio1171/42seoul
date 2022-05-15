@@ -6,12 +6,11 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 17:27:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/02/20 20:23:53 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/03/21 05:52:57 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#define BUFFER_SIZE 100
 
 char	*ft_strjoin(char *s1, char const *s2)
 {
@@ -64,6 +63,8 @@ char	*find_line1(char **remain_buf)
 	while ((*remain_buf)[i] != '\n')
 		i++;
 	line = (char *)malloc(sizeof(char) * (i + 2));
+	if (!line)
+		return (NULL);
 	i = 0;
 	while ((*remain_buf)[i] != '\n')
 	{
@@ -78,23 +79,31 @@ char	*find_line1(char **remain_buf)
 	return (line);
 }
 
-char	*find_line2(char *remain_buf)
+char	*find_line2(char **remain_buf)
 {
 	int		i;
 	char	*line;
 
 	i = 0;
-	while (remain_buf[i])
+	while ((*remain_buf)[i])
 		i++;
-	line = (char *)malloc(sizeof(char) * (i + 1));
-	i = 0;
-	while (remain_buf[i])
+	if (i == 0)
 	{
-		line[i] = remain_buf[i];
+		free (*remain_buf);
+		return (NULL);
+	}
+	line = (char *)malloc(sizeof(char) * (i + 1));
+	if (!line)
+		return (NULL);
+	i = 0;
+	while ((*remain_buf)[i])
+	{
+		line[i] = (*remain_buf)[i];
 		i++;
 	}
 	line[i + 1] = '\0';
-	free(remain_buf);
+	free(*remain_buf);
+	*remain_buf = NULL;
 	return (line);
 }
 
@@ -111,6 +120,6 @@ char	*get_next_line(int fd)
 	if (ft_strchr(remain_buf, '\n'))
 		line = find_line1(&remain_buf);
 	else
-		line = find_line2(remain_buf);
+		line = find_line2(&remain_buf);
 	return (line);
 }

@@ -1,27 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_printf.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/13 17:28:38 by junekim           #+#    #+#             */
-/*   Updated: 2022/03/21 00:47:21 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/05/04 14:29:48 by junekim           #+#    #+#             */
+/*   Updated: 2022/05/04 17:45:08 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef FT_PRINTF_H
+# define FT_PRINTF_H
 
-# include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h>
+# include <unistd.h>
 
-char	*ft_strchr(const char *str, int c);
-size_t	ft_strlcpy(char *dst, const char *src, size_t dstsize);
-size_t	ft_strlcat(char *dst, const char *src, size_t size);
-
-char	*ft_strjoin(char *s1, char const *s2);
-char	*ft_strdup(const char *src);
+int		ft_printf(const char *format, ...);
+void	counter_write(int fd, const void *buf, size_t count, int *num);
 size_t	ft_strlen(const char *str);
-char	*get_next_line(int fd);
+void	ft_putnbr(int n, int *num);
+void	ft_unsinged_putnbr(unsigned int n, int *num);
+int		puthexa(unsigned long n, int mode, int *num);
+void	ft_putstr(char *s, int *num);
+void	ft_putchar(char c, int *num);
+
 #endif
