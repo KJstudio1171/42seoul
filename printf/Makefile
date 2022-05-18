@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: junekim <june1171@naver.com>               +#+  +:+       +#+         #
+#    By: junekim <junekim@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/04 15:57:01 by junekim           #+#    #+#              #
-#    Updated: 2022/05/04 17:02:40 by junekim          ###   ########seoul.kr   #
+#    Updated: 2022/05/18 19:45:10 by junekim          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ $(NAME) : $(OBJECTS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean :
-	$(RM) $(OBJS) $(BOBJS)
+	$(RM) $(OBJS)
 
 fclean : clean
 	$(RM) $(NAME)
