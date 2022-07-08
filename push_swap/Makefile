@@ -3,15 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: junekim <junekim@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: junekim <june1171@naver.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-<<<<<<< HEAD:minitalk/Makefile
 #    Created: 2021/12/31 13:00:54 by junekim           #+#    #+#              #
-#    Updated: 2022/06/21 19:15:55 by junekim          ###   ########seoul.kr   #
-=======
-#    Created: 2022/05/04 15:57:01 by junekim           #+#    #+#              #
-#    Updated: 2022/05/18 19:45:10 by junekim          ###   ########.fr        #
->>>>>>> f7193f6458ec0d529c9bd769f584e4c3065eab5d:printf/Makefile
+#    Updated: 2022/07/08 08:53:36 by junekim          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,26 +14,36 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
-SERVER = server
-CLIENT = client
+SRCS = op_push.c op_reverse_rotate.c op_rotate.c op_swap.c stack_utils.c \
+		print.c sort_low_number.c min_max_swap.c quicksort_stack.c \
+		error.c is_inputable.c get_next_line.c arr_utils.c
 
-all : 
+OBJS = $(SRCS:%.c=%.o)
+
+LIBFT = ./libft/libft.a
+
+PUSH_SWAP = push_swap
+CHECKER = checker
+
+all : $(PUSH_SWAP) $(CHECKER)
+
+$(LIBFT) :
 	make -C ./libft
-	$(CC) $(CFLAGS) server.c ./libft/libft.a -o $(SERVER)
-	$(CC) $(CFLAGS) client.c ./libft/libft.a -o $(CLIENT)
+
+$(PUSH_SWAP) : $(LIBFT)
+	$(CC) $(CFLAGS) $(SRCS) push_swap.c ./libft/libft.a -o $(PUSH_SWAP)
+
+$(CHECKER) : $(LIBFT)
+	$(CC) $(CFLAGS) $(SRCS) checker.c ./libft/libft.a -o $(CHECKER)
 
 clean :
-<<<<<<< HEAD:minitalk/Makefile
 	make clean -C ./libft
-	$(RM) server.o client.o
-=======
-	$(RM) $(OBJS)
->>>>>>> f7193f6458ec0d529c9bd769f584e4c3065eab5d:printf/Makefile
+	$(RM) $(OBJS) push_swap.o checker.o
 
 fclean : clean
 	make fclean -C ./libft
-	$(RM) $(SERVER) $(CLIENT)
+	$(RM) $(PUSH_SWAP) $(CHECKER)
 
 re : fclean all
 
-.PHONY : all bonus clean fclean re .c.o
+.PHONY : all bonus clean fclean re

@@ -1,23 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 14:41:00 by junekim           #+#    #+#             */
-/*   Updated: 2022/07/08 08:37:22 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/07/07 23:27:27 by junekim           #+#    #+#             */
+/*   Updated: 2022/07/08 00:09:20 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-size_t	ft_strlen(const char *str)
+void	print_error(void)
 {
-	size_t	len;
-
-	len = 0;
-	while (*str++)
-		len++;
-	return (len);
+	write(2, "Error\n", 6);
+	exit(1);
 }

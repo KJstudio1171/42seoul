@@ -1,23 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/16 14:41:00 by junekim           #+#    #+#             */
-/*   Updated: 2022/07/08 08:37:22 by junekim          ###   ########seoul.kr  */
+/*   Created: 2022/07/05 23:07:46 by junekim           #+#    #+#             */
+/*   Updated: 2022/07/08 08:45:57 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-size_t	ft_strlen(const char *str)
+int	main(int argc, char **argv)
 {
-	size_t	len;
+	int		i;
+	t_info	info;
+	int		*arr;
 
-	len = 0;
-	while (*str++)
-		len++;
-	return (len);
+	if (is_inputable(argc, argv))
+	{
+		print_error();
+		return (0);
+	}
+	i = argc - 1;
+	init_info(&info, argc - 1, 0);
+	while (i > 0)
+	{
+		push_a(&info, new_stack(ft_atoi(argv[i])));
+		i--;
+	}
+	arr = init_arr(&info);
+	quicksort_stack_a(&info, info.len);
+	free_stacks(&info);
+	free(arr);
+	return (0);
 }
