@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/06 20:55:51 by junekim           #+#    #+#             */
-/*   Updated: 2022/07/07 12:59:00 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/07/08 10:04:52 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,9 @@
 static void	sort_number_three_sub(t_info *info, int mode)
 {
 	if (mode == 0)
-	{
 		if (info->a_head->data > info->a_head->prev->data)
 			sa(info);
-	}
-	else if (mode == 1)
+	if (mode == 1)
 	{
 		pb(info);
 		sort_number_three_sub(info, 0);

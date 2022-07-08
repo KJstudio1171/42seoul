@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/07 23:14:50 by junekim           #+#    #+#             */
-/*   Updated: 2022/07/08 09:31:39 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/07/08 09:49:33 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int	is_not_digit(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (j == 0 && argv[i][j] == '-')
+			if (j == 0 && argv[i][j] == '-' && argv[i][j+1] != '\0')
 			{
 				j++;
 				continue ;

@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/08 01:09:53 by junekim           #+#    #+#             */
-/*   Updated: 2022/07/08 09:22:21 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/07/08 09:51:10 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,13 @@ static void	print_is_sorted(t_info *info)
 	return ;
 }
 
+static void	free_checker(int *arr, char *line, t_info *info)
+{
+	free(line);
+	free_stacks(info);
+	free(arr);
+}
+
 int	main(int argc, char **argv)
 {
 	int		i;
@@ -76,10 +83,12 @@ int	main(int argc, char **argv)
 	char	*line;
 	t_info	info;
 
+	if (argc == 1)
+		return (0);
 	if (is_inputable(argc, argv))
 		print_error();
 	i = argc - 1;
-	init_info(&info, argc - 1, 0);
+	init_info(&info, argc - 1, 1);
 	while (i > 0)
 		push_a(&info, new_stack(ft_atoi(argv[i--])));
 	arr = init_arr(&info);
@@ -90,9 +99,7 @@ int	main(int argc, char **argv)
 		free(line);
 		line = get_next_line(0);
 	}
-	free(line);
 	print_is_sorted(&info);
-	free_stacks(&info);
-	free(arr);
+	free_checker(arr, line, &info);
 	return (0);
 }

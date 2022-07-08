@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/07/05 21:44:25 by junekim           #+#    #+#             */
-/*   Updated: 2022/07/08 09:22:01 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/07/08 10:09:37 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,11 +63,15 @@ int		max_data(t_stack *head, int len);
 void	sort_low_number(t_info *info, int num);
 
 int		is_sorted(t_info *info);
-int		*init_arr(t_info *info);
+void	find_pivot(t_info *info, int *pivot, int min, int num);
+void	reverse_rotate(t_info *info, int op1, int op2);
+
 void	quicksort_stack_a(t_info *info, int num);
 void	quicksort_stack_b(t_info *info, int num);
 
 void	print_error(void);
+
+int		*init_arr(t_info *info);
 
 int		is_inputable(int argc, char **argv);
 
