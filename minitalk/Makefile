@@ -6,7 +6,7 @@
 #    By: junekim <june1171@naver.com>               +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/31 13:00:54 by junekim           #+#    #+#              #
-#    Updated: 2022/07/05 21:39:32 by junekim          ###   ########seoul.kr   #
+#    Updated: 2022/07/05 23:14:28 by junekim          ###   ########seoul.kr   #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,4 +32,4 @@ fclean : clean
 
 re : fclean all
 
-.PHONY : all bonus clean fclean re .c.o
+.PHONY : all bonus clean fclean re
