@@ -1,0 +1,17 @@
+make --dry-run --keep-going --print-directory
+make: Entering directory `/Users/macbook_june/KJstudio/42seoul/so_long'
+mkdir objs/
+arch -x86_64 cc -Wall -Wextra -Werror -Imlx -c srcs/so_long.c -o objs/so_long.o
+arch -x86_64 cc -Wall -Wextra -Werror -Imlx -c srcs/character.c -o objs/character.o
+arch -x86_64 cc -Wall -Wextra -Werror -Imlx -c srcs/map.c -o objs/map.o
+arch -x86_64 cc -Wall -Wextra -Werror -Imlx -c srcs/error.c -o objs/error.o
+arch -x86_64 cc -Wall -Wextra -Werror -Imlx -c srcs/get_next_line.c -o objs/get_next_line.o
+arch -x86_64 cc -Wall -Wextra -Werror -Imlx -c srcs/init.c -o objs/init.o
+arch -x86_64 cc -Wall -Wextra -Werror -Imlx -c srcs/close.c -o objs/close.o
+arch -x86_64 cc -Wall -Wextra -Werror -Imlx -c srcs/image.c -o objs/image.o
+arch -x86_64 cc -Wall -Wextra -Werror -Imlx -c srcs/map_parser.c -o objs/map_parser.o
+make -C ./libft
+arch -x86_64 cc -g objs/so_long.o objs/character.o objs/map.o objs/error.o objs/get_next_line.o objs/init.o objs/close.o objs/image.o objs/map_parser.o libft/libft.a -L./mlx -lmlx -framework OpenGL -framework AppKit -o so_long
+ 
+make: Leaving directory `/Users/macbook_june/KJstudio/42seoul/so_long'
+ 

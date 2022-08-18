@@ -1,0 +1,547 @@
+make all --print-data-base --no-builtin-variables --no-builtin-rules --question
+# GNU Make 3.81
+ 
+# Copyright (C) 2006  Free Software Foundation, Inc.
+# This is free software; see the source for copying conditions.
+# There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A
+# PARTICULAR PURPOSE.
+
+# This program built for i386-apple-darwin11.3.0
+ 
+
+# Make data base, printed on Thu Aug 18 13:52:28 2022
+
+# Variables
+
+# automatic
+<D = $(patsubst %/,%,$(dir $<))
+# automatic
+?F = $(notdir $?)
+# makefile (from `Makefile', line 25)
+SRCS_BONUS = $(addprefix $(SRCS_DIR_BONUS), $(SRCS_FILES_BONUS))
+# automatic
+?D = $(patsubst %/,%,$(dir $?))
+# automatic
+@D = $(patsubst %/,%,$(dir $@))
+# automatic
+@F = $(notdir $@)
+# makefile
+CURDIR := /Users/macbook_june/KJstudio/42seoul/so_long
+# makefile
+ 
+SHELL = /bin/sh
+# makefile (from `Makefile', line 15)
+RM = rm -rf
+# environment
+VSCODE_NLS_CONFIG = {"locale":"ko","availableLanguages":{"*":"ko"},"_languagePackId":"2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_translationsConfigFile":"/Users/macbook_june/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/tcf.json","_cacheRoot":"/Users/macbook_june/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko","_resolvedLanguagePackCoreLocation":"/Users/macbook_june/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/3b889b090b5ad5793f524b5d1d39fda662b96a2a","_corruptedFile":"/Users/macbook_june/Library/Application Support/Code/clp/2dff5cff996ed6cbe8d8aa8740f86aa0.ko/corrupted.info","_languagePackSupport":true}
+# environment
+_ = /usr/bin/make
+# makefile (from `Makefile', line 14)
+CFLAGS = -Wall -Wextra -Werror -Imlx
+# makefile (from `Makefile', line 36)
+NAME_BONUS = so_long_bonus
+# makefile (from `Makefile', line 1)
+MAKEFILE_LIST :=  Makefile
+# environment
+__CFBundleIdentifier = com.microsoft.VSCode
+# environment
+INFOPATH = /opt/homebrew/share/info:
+# makefile (from `Makefile', line 30)
+OBJS_DIR_BONUS = objs_bonus/
+# environment
+VSCODE_CWD = /Users/macbook_june/KJstudio/42seoul
+# makefile (from `Makefile', line 27)
+OBJS_DIR = objs/
+# environment
+PATH = /opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin
+# environment
+LSCOLORS = Gxfxcxdxbxegedabagacad
+# environment
+LaunchInstanceID = CC9F528E-DFB6-4707-937D-0603187F4D26
+# makefile (from `Makefile', line 17)
+SRCS_DIR = srcs/
+# environment
+ELECTRON_RUN_AS_NODE = 1
+# default
+.FEATURES := target-specific order-only second-expansion else-if archives jobserver check-symlink
+# environment
+SSH_AUTH_SOCK = /private/tmp/com.apple.launchd.3Fsyhh9FVB/Listeners
+# automatic
+%F = $(notdir $%)
+# makefile (from `Makefile', line 28)
+OBJS = $(SRCS:$(SRCS_DIR)%.c=$(OBJS_DIR)%.o)
+# makefile (from `Makefile', line 18)
+SRCS_FILES = so_long.c character.c map.c error.c get_next_line.c init.c close.c image.c map_parser.c
+# environment
+PWD = /Users/macbook_june/KJstudio/42seoul/so_long
+# environment
+HOMEBREW_CELLAR = /opt/homebrew/Cellar
+# makefile (from `Makefile', line 31)
+OBJS_BONUS = $(SRCS_BONUS:$(SRCS_DIR_BONUS)%.c=$(OBJS_DIR_BONUS)%.o)
+# environment
+ORIGINAL_XDG_CURRENT_DESKTOP = undefined
+# environment
+MANPATH = /opt/homebrew/share/man::
+# environment
+VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
+# environment
+HOME = /Users/macbook_june
+# default
+MAKEFILEPATH = $(shell /usr/bin/xcode-select -print-path 2>/dev/null || echo /Developer)/Makefiles
+# environment
+VSCODE_CODE_CACHE_PATH = /Users/macbook_june/Library/Application Support/Code/CachedData/3b889b090b5ad5793f524b5d1d39fda662b96a2a
+# environment
+LOGNAME = macbook_june
+# environment
+APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
+# environment
+ZSH = /Users/macbook_june/.oh-my-zsh
+# environment
+VSCODE_HANDLES_UNCAUGHT_ERRORS = true
+# automatic
+^D = $(patsubst %/,%,$(dir $^))
+# environment
+XPC_FLAGS = 0x0
+# environment
+COLORTERM = truecolor
+# default
+MAKE = $(MAKE_COMMAND)
+# environment
+LC_TERMINAL = iTerm2
+# makefile (from `Makefile', line 19)
+SRCS = $(addprefix $(SRCS_DIR), $(SRCS_FILES))
+# environment
+SHLVL = 2
+# makefile (from `Makefile', line 33)
+LIBFT = libft/libft.a
+# makefile (from `Makefile', line 13)
+CC = cc
+# default
+MAKE_VERSION := 3.81
+# environment
+USER = macbook_june
+# makefile
+.DEFAULT_GOAL := all
+# default
+MAKECMDGOALS := all
+# environment
+TERM_SESSION_ID = w0t0p0:17E2D402-D54D-41D9-B7D6-ABB75656CD73
+# makefile (from `Makefile', line 35)
+NAME = so_long
+# environment
+LESS = -R
+# automatic
+%D = $(patsubst %/,%,$(dir $%))
+# default
+MAKE_COMMAND := /Library/Developer/CommandLineTools/usr/bin/make
+# environment
+TERM_PROGRAM = iTerm.app
+# default
+.VARIABLES := 
+# environment
+TMPDIR = /var/folders/w_/njrj9yrj70dd_x4crgj63qh00000gn/T/
+# automatic
+*F = $(notdir $*)
+# environment
+VSCODE_IPC_HOOK = /Users/macbook_june/Library/Application Support/Code/1.69.2-main.sock
+# environment
+MallocNanoZone = 0
+# makefile
+MAKEFLAGS = Rrqp
+# environment
+MFLAGS = -Rrqp
+# automatic
+*D = $(patsubst %/,%,$(dir $*))
+# environment
+TERM_PROGRAM_VERSION = 3.4.16
+# environment
+XPC_SERVICE_NAME = application.com.microsoft.VSCode.639317.639323.19A5F57C-5DB1-4966-87E9-046B6942D2EA
+# environment
+LC_TERMINAL_VERSION = 3.4.16
+# environment
+HOMEBREW_PREFIX = /opt/homebrew
+# automatic
++D = $(patsubst %/,%,$(dir $+))
+# automatic
++F = $(notdir $+)
+# environment
+ITERM_SESSION_ID = w0t0p0:17E2D402-D54D-41D9-B7D6-ABB75656CD73
+# environment
+HOMEBREW_REPOSITORY = /opt/homebrew
+# environment
+COLORFGBG = 15;0
+# environment
+__CF_USER_TEXT_ENCODING = 0x1F5:0x3:0x33
+# environment
+COMMAND_MODE = unix2003
+# default
+MAKEFILES := 
+# makefile (from `Makefile', line 21)
+SRCS_DIR_BONUS = srcs_bonus/
+# automatic
+<F = $(notdir $<)
+# environment
+ITERM_PROFILE = Default
+# environment
+PAGER = less
+# environment
+LC_ALL = C
+# environment
+SECURITYSESSIONID = 186ad
+# automatic
+^F = $(notdir $^)
+# makefile (from `Makefile', line 22)
+SRCS_FILES_BONUS = so_long.c character.c map.c error.c get_next_line.c init.c close.c image.c frame.c start.c init_image.c init_image_sub.c animation.c animate_image_64.c missile.c print_move.c init_animation.c map_parser.c
+# default
+SUFFIXES := 
+# environment
+MAKELEVEL := 0
+# environment
+LANG = C
+# environment
+TERM = xterm-256color
+# environment
+VSCODE_PID = 1827
+# variable set hash-table stats:
+# Load=94/1024=9%, Rehash=0, Collisions=14/145=10%
+
+# Pattern-specific Variable Values
+
+# No pattern-specific variable values.
+
+# Directories
+
+# . (device 16777232, inode 1186177): 15 files, no impossibilities.
+# srcs_bonus (device 16777232, inode 1331694): No files, no impossibilities so far.
+# srcs (device 16777232, inode 1329559): No files, no impossibilities so far.
+
+# 15 files, no impossibilities in 3 directories.
+
+# Implicit Rules
+
+objs/%.o: srcs/%.c
+#  commands to execute (from `Makefile', line 53):
+	arch -x86_64 $(CC) $(CFLAGS) -c $< -o $@
+	
+
+objs_bonus/%.o: srcs_bonus/%.c
+#  commands to execute (from `Makefile', line 56):
+	arch -x86_64 $(CC) $(CFLAGS) -c $< -o $@
+	
+
+# 2 implicit rules, 0 (0.0%) terminal.
+
+# Files
+
+objs_bonus/:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 62):
+	mkdir $(OBJS_DIR_BONUS)
+	
+
+# Not a target:
+objs/get_next_line.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/frame.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/init_image_sub.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+all: so_long
+#  Phony target (prerequisite of .PHONY).
+#  Command-line target.
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+
+# Not a target:
+objs/error.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+.PHONY: all bonus clean fclean re
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/init_animation.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/image.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/missile.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/close.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/so_long.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/init.o:
+ 
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/map_parser.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+Makefile:
+#  Implicit rule search has been done.
+#  Last modified 2022-08-18 13:52:23
+#  File has been updated.
+#  Successfully updated.
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/0=0%
+
+# Not a target:
+objs_bonus/init_image.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/character.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+objs:
+#  Implicit rule search has not been done.
+#  Implicit/static pattern stem: `'
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := objs
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := 
+# automatic
+# | := 
+# automatic
+# < := 
+# automatic
+# ^ := 
+# automatic
+# ? := 
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/11=9%
+#  commands to execute (from `Makefile', line 59):
+	mkdir $(OBJS_DIR)
+	
+
+# Not a target:
+objs_bonus/animate_image_64.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/map.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/image.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+libft/libft.a:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 42):
+	make -C ./libft
+	
+
+bonus: so_long_bonus
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+fclean: clean
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 69):
+	make fclean -C ./libft
+	$(RM) $(NAME) $(NAME_BONUS)
+	
+
+# Not a target:
+objs/so_long.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/init.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+so_long_bonus: objs_bonus/ objs_bonus/so_long.o objs_bonus/character.o objs_bonus/map.o objs_bonus/error.o objs_bonus/get_next_line.o objs_bonus/init.o objs_bonus/close.o objs_bonus/image.o objs_bonus/frame.o objs_bonus/start.o objs_bonus/init_image.o objs_bonus/init_image_sub.o objs_bonus/animation.o objs_bonus/animate_image_64.o objs_bonus/missile.o objs_bonus/print_move.o objs_bonus/init_animation.o objs_bonus/map_parser.o
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 49):
+	make -C ./libft
+	arch -x86_64 $(CC) -g $(OBJS_BONUS) $(LIBFT) -L./mlx -lmlx -framework OpenGL -framework AppKit -o $(NAME_BONUS)
+	
+
+# Not a target:
+.DEFAULT:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs/character.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/start.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+re: fclean all
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+
+# Not a target:
+objs/map.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+clean:
+#  Phony target (prerequisite of .PHONY).
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has not been updated.
+#  commands to execute (from `Makefile', line 65):
+	make clean -C ./libft
+	$(RM) $(OBJS_DIR) $(OBJS_DIR_BONUS)
+	
+
+# Not a target:
+objs_bonus/get_next_line.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/error.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+so_long: objs objs/so_long.o objs/character.o objs/map.o objs/error.o objs/get_next_line.o objs/init.o objs/close.o objs/image.o objs/map_parser.o
+#  Implicit rule search has not been done.
+#  File does not exist.
+#  File has been updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/3=0%
+#  commands to execute (from `Makefile', line 45):
+	make -C ./libft
+	arch -x86_64 $(CC) -g $(OBJS) $(LIBFT) -L./mlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+	
+
+# Not a target:
+objs_bonus/animation.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/print_move.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/close.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# Not a target:
+objs_bonus/map_parser.o:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
+
+# files hash-table stats:
+# Load=41/1024=4%, Rehash=0, Collisions=0/94=0%
+# VPATH Search Paths
+
+# No `vpath' search paths.
+
+# No general (`VPATH' variable) search path.
+
+# # of strings in strcache: 1
+# # of strcache buffers: 1
+# strcache size: total = 4096 / max = 4096 / min = 4096 / avg = 4096
+# strcache free: total = 4087 / max = 4087 / min = 4087 / avg = 4087
+
+# Finished Make data base on Thu Aug 18 13:52:28 2022
+
+ 
