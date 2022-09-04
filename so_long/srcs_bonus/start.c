@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/15 07:10:32 by junekim           #+#    #+#             */
-/*   Updated: 2022/08/18 13:42:51 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/08/19 18:03:52 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	start_page(t_game_manager *gm)
 	mlx_hook(gm -> win, EXIT, 0, close_game, gm);
 }
 
-static int	move_start_sub(t_game_manager *gm)
+static void	move_start_sub(t_game_manager *gm)
 {
 	if (gm->map_info->width > 4)
 	{

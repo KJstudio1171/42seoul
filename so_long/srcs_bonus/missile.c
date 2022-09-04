@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/17 17:06:16 by junekim           #+#    #+#             */
-/*   Updated: 2022/08/18 13:48:47 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/08/19 18:04:35 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,27 +21,6 @@ void	missile(t_game_manager *gm)
 	gm -> animation -> missile_fighter -> width = gm -> x;
 	gm -> animation -> missile_fighter -> height = gm -> y;
 	gm -> animation -> missile_fighter -> dir = gm -> dir;
-}
-
-static void	missile_move_sub2(t_game_manager *gm, t_position *position)
-{
-	int		i;
-	int		dir;
-	char	*ptr;
-
-	i = position->height * gm->map_info->width + position->width;
-	dir = position -> dir;
-	ptr = gm -> map_info -> map_string;
-	if (dir == S)
-	{
-		missile_move_sub1(&ptr[i + gm->map_info->width], gm, position);
-		position->height += 1;
-	}
-	else if (dir == D)
-	{
-		missile_move_sub1(&ptr[i + 1], gm, position);
-		position->width += 1;
-	}
 }
 
 static void	missile_move_sub1(char *np, t_game_manager *gm, \
@@ -65,6 +44,27 @@ t_position *position)
 	else if (*np == 'c')
 	{
 		map_update(gm);
+	}
+}
+
+static void	missile_move_sub2(t_game_manager *gm, t_position *position)
+{
+	int		i;
+	int		dir;
+	char	*ptr;
+
+	i = position->height * gm->map_info->width + position->width;
+	dir = position -> dir;
+	ptr = gm -> map_info -> map_string;
+	if (dir == S)
+	{
+		missile_move_sub1(&ptr[i + gm->map_info->width], gm, position);
+		position->height += 1;
+	}
+	else if (dir == D)
+	{
+		missile_move_sub1(&ptr[i + 1], gm, position);
+		position->width += 1;
 	}
 }
 

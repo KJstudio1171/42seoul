@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/14 22:08:33 by junekim           #+#    #+#             */
-/*   Updated: 2022/08/14 23:29:01 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/08/19 18:41:17 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static char	*ft_strjoin2(char *s1, char *s2)
 	return (ptr);
 }
 
-static void	is_map_sub(t_game_manager *gm, char	*ptr)
+static void	is_map_sub(t_game_manager *gm, int fd, char	*ptr)
 {
 	if (*ptr != 'C' && *ptr != 'E' && *ptr != 'P'
 		&& *ptr != '1' && *ptr != '0')
-		map_error(NO_MAP, gm);
+		map_error(NO_MAP, fd, gm);
 	if (*ptr == 'C')
 		gm -> map_info -> collectible += 1;
 	else if (*ptr == 'E')
@@ -47,7 +47,7 @@ static void	is_map_sub(t_game_manager *gm, char	*ptr)
 		gm -> map_info -> start_position += 1;
 }
 
-static void	is_map(t_game_manager *gm)
+static void	is_map(t_game_manager *gm, int fd)
 {
 	char	*ptr;
 	size_t	i;
@@ -57,20 +57,20 @@ static void	is_map(t_game_manager *gm)
 	while (i < gm->map_info->width)
 	{
 		if (ptr[i] != '1' || ptr[ft_strlen(ptr) - 1 - i] != '1')
-			map_error(NO_WALL, gm);
+			map_error(NO_WALL, fd, gm);
 		i++;
 	}
 	while (*ptr)
 	{
-		is_map_sub(gm, ptr);
+		is_map_sub(gm, fd, ptr);
 		ptr++;
 	}
 	if (gm -> map_info -> collectible == 0)
-		map_error(NO_COLLECTIBLE, gm);
+		map_error(NO_COLLECTIBLE, fd, gm);
 	else if (gm -> map_info -> exit == 0)
-		map_error(NO_EXIT, gm);
+		map_error(NO_EXIT, fd, gm);
 	else if (gm -> map_info -> start_position != 1)
-		map_error(NO_START_POSITION, gm);
+		map_error(NO_START_POSITION, fd, gm);
 }
 
 static	void	map_parser_sub(int fd, char **line, t_game_manager *gm)
@@ -86,9 +86,9 @@ static	void	map_parser_sub(int fd, char **line, t_game_manager *gm)
 	if (*line)
 	{
 		if (ft_strlen(*line) != map_info->width)
-			map_error(NO_RECTANGULAR, gm);
+			map_error(NO_RECTANGULAR, fd, gm);
 		if ((*line)[0] != '1' || (*line)[map_info->width - 1] != '1')
-			map_error(NO_WALL, gm);
+			map_error(NO_WALL, fd, gm);
 	}
 }
 
@@ -104,10 +104,10 @@ void	map_parser(t_game_manager *gm, char *file_name)
 		open_error();
 	line = get_next_line(fd);
 	if (!line)
-		map_error(NO_MAP, gm);
+		map_error(NO_MAP, fd, gm);
 	map_info->width = ft_strlen(line) - 1;
 	line[map_info->width] = '\0';
 	while (line)
 		map_parser_sub(fd, &line, gm);
-	is_map(gm);
+	is_map(gm, fd);
 }

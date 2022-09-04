@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/07 17:13:40 by junekim           #+#    #+#             */
-/*   Updated: 2022/08/18 13:59:38 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/08/19 18:37:50 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ char	*get_next_line(int fd);
 void	file_error(void);
 void	open_error(void);
 void	error_manager(t_game_manager *gm);
-void	map_error(int flag, t_game_manager *gm);
+void	map_error(int flag, int fd ,t_game_manager *gm);
 void	finish(t_game_manager *gm);
 void	init_images(t_game_manager *gm, t_images *images);
 void	map_parser(t_game_manager *gm, char *file_name);

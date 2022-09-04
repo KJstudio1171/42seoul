@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:43:53 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/04 21:56:16 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/05 01:06:00 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	time_over(t_philo_manager *manager)
 	while (i < manager->num_philos)
 	{
 		time = get_time();
-		if (manager->time_to_die <= time - manager->philos[i].finish_time)
+		if (manager->time_to_die <= time - manager->philos[i].start_time)
 		{
 			manager->stop = 1;
 			if (pthread_mutex_lock(&(manager->shell)))

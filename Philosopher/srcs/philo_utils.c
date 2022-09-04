@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 19:53:36 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/04 21:50:34 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/05 01:37:18 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ int	philo_print(t_philo_manager *manager, int num, char *string)
 	time = get_time();
 	if (time == -1)
 		return (1);
+	usleep(10);
 	if (!manager->stop)
 	{
 		if (pthread_mutex_lock(&(manager->shell)))

@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/08/08 16:07:19 by junekim           #+#    #+#             */
-/*   Updated: 2022/08/15 00:18:02 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/08/19 18:40:55 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ void	error_manager(t_game_manager *gm)
 	exit(1);
 }
 
-void	map_error(int flag, t_game_manager *gm)
+void	map_error(int flag, int fd, t_game_manager *gm)
 {
+	close(fd);
 	ft_putstr_fd("Error\n", 1);
 	if (flag == NO_MAP)
 		ft_putstr_fd("no map or not working GNL\n", 1);

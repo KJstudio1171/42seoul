@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 19:16:11 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/04 21:44:48 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/05 01:21:05 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,9 @@ static void	philo_sleep_thinking(t_philo_manager *manager, t_philo *philo)
 		if ((finish_time - start_time) >= manager \
 		->time_to_sleep)
 			break ;
-		usleep(10);
+		usleep(1);
 	}
 	philo_print(manager, philo->num, "is thinking");
-	usleep(100);
 	return ;
 }
 
@@ -48,7 +47,7 @@ static void	philo_eat(t_philo_manager *manager, t_philo *philo)
 		if ((philo->finish_time - philo->start_time) >= manager \
 		->time_to_eat)
 			break ;
-		usleep(10);
+		usleep(1);
 	}
 	return ;
 }

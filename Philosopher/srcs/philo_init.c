@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 00:38:59 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/04 20:55:05 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/05 01:45:46 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,7 @@ int	philo_create(t_philo_manager *manager, t_philo_act *act_info)
 	if (pthread_create(&(manager->philos[0].philo_t), \
 	NULL, (void *)philo_act_one, (void *)&(act_info[0])))
 		return (1);
+	usleep(1000);
 	while (i < manager->num_philos)
 	{
 		manager->philo_index = i;
@@ -98,7 +99,7 @@ int	philo_create(t_philo_manager *manager, t_philo_act *act_info)
 		if (pthread_create(&(manager->philos[i].philo_t), \
 		NULL, (void *)philo_act, (void *)&(act_info[i])))
 			return (1);
-		usleep(100);
+		usleep(1000);
 		i++;
 	}
 	return (0);
