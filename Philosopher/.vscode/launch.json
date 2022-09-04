@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "C/C++ Runner: Debug Session",
+      "type": "lldb",
+      "request": "launch",
+      "args": [2 ,10 ,1 ,1],
+      "stopAtEntry": true,
+      "externalConsole": false,
+      "cwd": "/Users/macbook_june/KJstudio/42seoul/Philosopher/srcs",
+      "program": "/Users/macbook_june/KJstudio/42seoul/Philosopher/srcs/build/Debug/outDebug",
+      "MIMode": "gdb"
+    }
+  ]
+}
