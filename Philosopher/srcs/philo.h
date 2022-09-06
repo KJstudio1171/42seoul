@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/02 19:30:03 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/04 20:51:46 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/06 12:52:40 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,16 +56,14 @@ void		philo_act_one(t_philo_act *act_info);
 long long	get_time(void);
 int			print_error(char *string);
 int			philo_print(t_philo_manager *manager, int num, char *string);
-void		philo_stop(t_philo_manager *manager);
+int			philo_stop(t_philo_manager *manager);
 int			philo_create(t_philo_manager *manager, t_philo_act *act_info);
 int			init_malloc(t_philo_manager *manager);
 void		init_manager(int argc, char **argv, t_philo_manager *manager);
-int			init_philo(t_philo_manager *manager);
+void		init_philo(t_philo_manager *manager);
 int			init_mutex(t_philo_manager *manager);
 void		philo_destroy(t_philo_manager *manager);
 void		philo_free(t_philo_manager *manager);
 int			is_philo(t_philo_manager *manager);
-
-
 
 #endif

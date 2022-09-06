@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 00:38:59 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/05 01:45:46 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/06 12:57:29 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,13 @@ int	init_malloc(t_philo_manager *manager)
 	* manager->num_philos);
 	if (!manager->forks)
 	{
-		philo_free(manager);
+		free(manager->philos);
 		return (1);
 	}
 	return (0);
 }
 
-int	init_philo(t_philo_manager *manager)
+void	init_philo(t_philo_manager *manager)
 {
 	int	i;
 
@@ -56,7 +56,7 @@ int	init_philo(t_philo_manager *manager)
 		manager->philos[i].num_eating = 0;
 		i++;
 	}
-	return (0);
+	return ;
 }
 
 int	init_mutex(t_philo_manager *manager)

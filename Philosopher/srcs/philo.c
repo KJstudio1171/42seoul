@@ -6,11 +6,17 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:53:03 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/04 14:40:07 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/06 12:55:51 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
+
+static void	philo_free_destroy(t_philo_manager *manager)
+{
+	philo_destroy(manager);
+	philo_free(manager);
+}
 
 static int	philo(t_philo_manager *manager, t_philo_act *act_info)
 {
@@ -18,12 +24,24 @@ static int	philo(t_philo_manager *manager, t_philo_act *act_info)
 
 	i = 0;
 	if (philo_create(manager, act_info))
+	{
+		pthread_mutex_destroy(&(manager->shell));
+		philo_free_destroy(manager);
 		return (1);
-	philo_stop(manager);
+	}
+	if (philo_stop(manager))
+	{
+		pthread_mutex_destroy(&(manager->shell));
+		philo_free_destroy(manager);
+		return (1);
+	}
 	while (i < manager->num_philos)
 	{
 		if (pthread_join(manager->philos[i].philo_t, NULL))
+		{
+			philo_free_destroy(manager);
 			return (1);
+		}
 		i++;
 	}
 	return (0);
@@ -69,11 +87,11 @@ int	main(int argc, char **argv)
 		return (print_error("malloc"));
 	if (philo(&manager, act_info))
 	{
-		philo_free(&manager);
+		philo_free_destroy(&manager);
+		free(act_info);
 		return (print_error("pthread"));
 	}
-	philo_destroy(&manager);
-	philo_free(&manager);
+	philo_free_destroy(&manager);
 	free(act_info);
 	return (0);
 }

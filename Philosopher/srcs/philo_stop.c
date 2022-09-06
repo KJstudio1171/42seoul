@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:43:53 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/05 01:06:00 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/06 12:58:41 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,20 +51,22 @@ static int	time_over(t_philo_manager *manager)
 			if (pthread_mutex_unlock(&(manager->shell)))
 				return (1);
 			pthread_mutex_destroy(&(manager->shell));
+			return (0);
 		}
 		i++;
 	}
 	return (0);
 }
 
-void	philo_stop(t_philo_manager *manager)
+int	philo_stop(t_philo_manager *manager)
 {
 	while (!manager->stop)
 	{
 		if (manager->flag)
 			if (num_over(manager))
-				return ;
+				return (0);
 		if (time_over(manager))
-			return ;
+			return (1);
 	}
+	return (0);
 }
