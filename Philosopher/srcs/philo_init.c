@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 00:38:59 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/06 12:57:29 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/07 03:59:17 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,7 @@
 void	init_manager(int argc, char **argv, t_philo_manager *manager)
 {
 	manager->stop = 0;
-	manager->philo_index = 0;
-	manager->flag = argc - 5;
+	manager->is_six = argc - 5;
 	manager->num_philos = philo_atoi(argv[1]);
 	manager->time_to_die = philo_atoi(argv[2]);
 	manager->time_to_eat = philo_atoi(argv[3]);
@@ -51,9 +50,12 @@ void	init_philo(t_philo_manager *manager)
 	while (i < manager->num_philos)
 	{
 		manager->philos[i].num = i + 1;
+		manager->philos[i].is_die = 0;
+		manager->philos[i].start_time = get_time();
 		manager->philos[i].left = i;
 		manager->philos[i].right = (i + 1) % manager->num_philos;
-		manager->philos[i].num_eating = 0;
+		manager->philos[i].num_eat = 0;
+		manager->philos[i].manager = manager;
 		i++;
 	}
 	return ;
@@ -64,10 +66,28 @@ int	init_mutex(t_philo_manager *manager)
 	int	i;
 
 	i = 0;
-	if (pthread_mutex_init(&(manager->shell), NULL))
+	if (pthread_mutex_init(&(manager->shell_mutex), NULL))
+	{
+		philo_free(manager);
 		return (1);
+	}
 	while (i < manager->num_philos)
 	{
+		if (pthread_mutex_init(&(manager->philos[i].eat_mutex), NULL))
+		{
+			philo_free(manager);
+			return (1);
+		}
+		if (pthread_mutex_init(&(manager->philos[i].die_mutex), NULL))
+		{
+			philo_free(manager);
+			return (1);
+		}
+		if (pthread_mutex_init(&(manager->philos[i].time_mutex), NULL))
+		{
+			philo_free(manager);
+			return (1);
+		}
 		if (pthread_mutex_init(&(manager->forks[i]), NULL))
 		{
 			philo_free(manager);
@@ -78,29 +98,29 @@ int	init_mutex(t_philo_manager *manager)
 	return (0);
 }
 
-int	philo_create(t_philo_manager *manager, t_philo_act *act_info)
+int	philo_create(t_philo_manager *manager)
 {
 	int	i;
 
-	i = 1;
-	manager->philo_index = 0;
-	manager->start_time = get_time();
-	manager->philos[0].start_time = get_time();
-	manager->philos[0].finish_time = get_time();
-	if (pthread_create(&(manager->philos[0].philo_t), \
-	NULL, (void *)philo_act_one, (void *)&(act_info[0])))
-		return (1);
-	usleep(1000);
+	i = 0;
+	if (manager->num_philos == 1)
+	{
+		if (pthread_create(&(manager->philos[0].philo_t), \
+		NULL, (void *)philo_act, (void *)&(manager->philos[0])))
+			return (1);
+		return (0);
+	}
 	while (i < manager->num_philos)
 	{
-		manager->philo_index = i;
-		manager->philos[i].start_time = get_time();
-		manager->philos[i].finish_time = get_time();
+		pthread_mutex_lock(&(manager->forks[i]));
 		if (pthread_create(&(manager->philos[i].philo_t), \
-		NULL, (void *)philo_act, (void *)&(act_info[i])))
+		NULL, (void *)philo_act, (void *)&(manager->philos[i])))
 			return (1);
-		usleep(1000);
 		i++;
 	}
+	manager->start_time = get_time();
+	i = 0;
+	while (i < manager->num_philos)
+		pthread_mutex_unlock(&(manager->forks[i++]));
 	return (0);
 }

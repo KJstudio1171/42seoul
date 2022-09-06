@@ -6,93 +6,106 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 19:16:11 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/05 01:21:05 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/07 05:03:55 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-static void	philo_sleep_thinking(t_philo_manager *manager, t_philo *philo)
+static int	philo_sleep_thinking(t_philo_manager *manager, t_philo *p)
 {
 	long long	start_time;
 	long long	finish_time;
+	int			is_die;
 
-	philo_print(manager, philo->num, "is sleeping");
+	is_die = philo_print(manager, p, "is sleeping");
 	start_time = get_time();
-	while (!manager->stop)
+	while (!is_die)
 	{
 		finish_time = get_time();
 		if ((finish_time - start_time) >= manager \
 		->time_to_sleep)
 			break ;
-		usleep(1);
+		usleep(100);
 	}
-	philo_print(manager, philo->num, "is thinking");
-	return ;
+	is_die = philo_print(manager, p, "is thinking");
+	return (is_die);
 }
 
-static void	philo_fork(t_philo_manager *manager, pthread_mutex_t *mutex, int n)
+static int	philo_fork(t_philo_manager *manager, pthread_mutex_t *m, t_philo *p)
 {
-	pthread_mutex_lock(mutex);
-	philo_print(manager, n, "has taken a fork");
+	pthread_mutex_lock(m);
+	return (philo_print(manager, p, "has taken a fork"));
 }
 
-static void	philo_eat(t_philo_manager *manager, t_philo *philo)
+static int	philo_eat(t_philo_manager *manager, t_philo *p)
 {
-	philo_print(manager, philo->num, "is eating");
-	philo->start_time = get_time();
-	while (!manager->stop)
+	int	is_die;
+
+	is_die = philo_print(manager, p, "is eating");
+	philo_mutex_time(p);
+	while (!is_die)
 	{
-		philo->finish_time = get_time();
-		if ((philo->finish_time - philo->start_time) >= manager \
-		->time_to_eat)
-			break ;
-		usleep(1);
-	}
-	return ;
-}
-
-void	philo_act_one(t_philo_act *act_info)
-{
-	while (!act_info->manager->stop)
-	{
-		philo_fork(act_info->manager, &(act_info->manager->forks[act_info->\
-		philo->right]), act_info->philo->num);
-		if (act_info->manager->num_philos != 1)
+		p->finish_time = get_time();
+		pthread_mutex_lock(&(p->time_mutex));
+		if ((p->finish_time - p->start_time) >= manager ->time_to_eat)
 		{
-			philo_fork(act_info->manager, &(act_info->manager->forks[act_info->\
-			philo->left]), act_info->philo->num);
-			philo_eat(act_info->manager, act_info->philo);
-			act_info->philo->num_eating += 1;
-			pthread_mutex_unlock(&(act_info->manager->\
-			forks[act_info->philo->right]));
+			pthread_mutex_unlock(&(p->time_mutex));
+			break ;
 		}
-		pthread_mutex_unlock(&(act_info->manager->forks[act_info->\
-		philo->left]));
-		if (act_info->manager->num_philos != 1)
-			philo_sleep_thinking(act_info->manager, act_info->philo);
-		else
-			while (!act_info->manager->stop)
-				;
+		pthread_mutex_unlock(&(p->time_mutex));
+		usleep(100);
+	}
+	pthread_mutex_lock(&(p->eat_mutex));
+	p->num_eat++;
+	pthread_mutex_unlock(&(p->eat_mutex));
+	return (is_die);
+}
+
+void	philo_act_one(t_philo *p)
+{
+	int	is_die;
+
+	is_die = 0;
+	while (!is_die)
+	{
+		is_die = philo_fork(p->manager, &(p->manager->forks[p->right]), p);
+		pthread_mutex_unlock(&(p->manager->forks[p->left]));
+		pthread_mutex_lock(&(p->die_mutex));
+		while (!p->is_die)
+		{
+			pthread_mutex_unlock(&(p->die_mutex));
+			usleep(1000);
+			pthread_mutex_lock(&(p->die_mutex));
+		}
+	}
+	pthread_mutex_unlock(&(p->die_mutex));
+	return ;
+}
+
+void	philo_act(t_philo *p)
+{
+	int	is_die;
+
+	is_die = 0;
+	pthread_mutex_lock(&(p->manager->forks[p->num - 1]));
+	pthread_mutex_unlock(&(p->manager->forks[p->num - 1]));
+	philo_mutex_time(p);
+	p->finish_time = get_time();
+	if (p->num % 2)
+		usleep(p->num * 500);
+	// else if (p->num == p->manager->num_philos)
+	// 	usleep(500);
+	while (!is_die)
+	{
+		is_die = philo_fork(p->manager, &(p->manager->forks[p->right]), p);
+		is_die = philo_fork(p->manager, &(p->manager->forks[p->left]), p);
+		is_die = philo_eat(p->manager, p);
+		pthread_mutex_unlock(&(p->manager->forks[p->right]));
+		pthread_mutex_unlock(&(p->manager->forks[p->left]));
+		is_die = philo_sleep_thinking(p->manager, p);
+		usleep(100);
 	}
 	return ;
 }
 
-void	philo_act(t_philo_act *act_info)
-{
-	while (!act_info->manager->stop)
-	{
-		philo_fork(act_info->manager, &(act_info->manager->forks[act_info->\
-		philo->left]), act_info->philo->num);
-		philo_fork(act_info->manager, &(act_info->manager->forks[act_info->\
-		philo->right]), act_info->philo->num);
-		philo_eat(act_info->manager, act_info->philo);
-		act_info->philo->num_eating += 1;
-		pthread_mutex_unlock(&(act_info->manager->forks[act_info->\
-		philo->right]));
-		pthread_mutex_unlock(&(act_info->manager->forks[act_info->\
-		philo->left]));
-		philo_sleep_thinking(act_info->manager, act_info->philo);
-	}
-	return ;
-}

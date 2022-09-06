@@ -29,6 +29,9 @@
     "**/.vscode/**"
   ],
   "files.associations": {
-    "cstdio": "c"
+    "cstdio": "c",
+    "__threading_support": "c",
+    "atomic": "c",
+    "mutex": "c"
   }
 }

@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 19:53:36 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/06 12:57:38 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/07 05:04:09 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,23 +27,23 @@ int	print_error(char *string)
 	return (1);
 }
 
-int	philo_print(t_philo_manager *manager, int num, char *string)
+int	philo_print(t_philo_manager *manager, t_philo *p, char *string)
 {
 	long long	time;
 
-	time = get_time();
-	if (time == -1)
-		return (1);
-	usleep(10);
-	if (!manager->stop)
+	pthread_mutex_lock(&(manager->shell_mutex));
+	pthread_mutex_lock(&(p->die_mutex));
+	if (!(p->is_die))
 	{
-		if (pthread_mutex_lock(&(manager->shell)))
-			return (1);
-		printf("%lld %d %s\n", time - manager->start_time, num, string);
-		if (pthread_mutex_unlock(&(manager->shell)))
-			return (1);
+		pthread_mutex_unlock(&(p->die_mutex));
+		time = get_time();
+		printf("%lld %d %s\n", time - manager->start_time, p->num, string);
+		pthread_mutex_unlock(&(manager->shell_mutex));
+		return (0);
 	}
-	return (0);
+	pthread_mutex_unlock(&(p->die_mutex));
+	pthread_mutex_unlock(&(manager->shell_mutex));
+	return (1);
 }
 
 void	philo_destroy(t_philo_manager *manager)

@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/04 09:53:03 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/06 12:55:51 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/07 04:03:50 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,20 +18,20 @@ static void	philo_free_destroy(t_philo_manager *manager)
 	philo_free(manager);
 }
 
-static int	philo(t_philo_manager *manager, t_philo_act *act_info)
+static int	philo(t_philo_manager *manager)
 {
 	int	i;
 
 	i = 0;
-	if (philo_create(manager, act_info))
+	if (philo_create(manager))
 	{
-		pthread_mutex_destroy(&(manager->shell));
+		pthread_mutex_destroy(&(manager->shell_mutex));
 		philo_free_destroy(manager);
 		return (1);
 	}
 	if (philo_stop(manager))
 	{
-		pthread_mutex_destroy(&(manager->shell));
+		pthread_mutex_destroy(&(manager->shell_mutex));
 		philo_free_destroy(manager);
 		return (1);
 	}
@@ -47,31 +47,9 @@ static int	philo(t_philo_manager *manager, t_philo_act *act_info)
 	return (0);
 }
 
-static int	malloc_philo_act(t_philo_manager *manager, t_philo_act **act_info)
-{
-	int	i;
-
-	i = 0;
-	*act_info = (t_philo_act *)malloc(sizeof(t_philo_act) \
-	* manager->num_philos);
-	if (!(*act_info))
-	{
-		philo_free(manager);
-		return (1);
-	}
-	while (i < manager->num_philos)
-	{
-		(*act_info)[i].manager = manager;
-		(*act_info)[i].philo = &(manager->philos[i]);
-		i++;
-	}
-	return (0);
-}
-
 int	main(int argc, char **argv)
 {
 	t_philo_manager	manager;
-	t_philo_act		*act_info;
 
 	if (argc != 5 && argc != 6)
 		return (print_error("argument"));
@@ -83,15 +61,12 @@ int	main(int argc, char **argv)
 	init_philo(&manager);
 	if (init_mutex(&manager))
 		return (print_error("mutex"));
-	if (malloc_philo_act(&manager, &act_info))
-		return (print_error("malloc"));
-	if (philo(&manager, act_info))
+	if (philo(&manager))
 	{
 		philo_free_destroy(&manager);
-		free(act_info);
 		return (print_error("pthread"));
 	}
+	usleep(100000);
 	philo_free_destroy(&manager);
-	free(act_info);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/30 14:20:02 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/04 13:16:21 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/07 01:09:55 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,5 +48,7 @@ int	philo_atoi(const char *nptr)
 		if (digit > 2147483647)
 			return (-1);
 	}
+	if (nptr[i])
+		return (-1);
 	return ((int)digit);
 }
