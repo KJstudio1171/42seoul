@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 19:53:36 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/07 05:04:09 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/07 06:49:08 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,13 @@ void	philo_destroy(t_philo_manager *manager)
 	int	i;
 
 	i = 0;
+	usleep(10000);
+	pthread_mutex_destroy(&(manager->shell_mutex));
 	while (i < manager->num_philos)
 	{
+		pthread_mutex_destroy(&(manager->philos[i].time_mutex));
+		pthread_mutex_destroy(&(manager->philos[i].die_mutex));
+		pthread_mutex_destroy(&(manager->philos[i].eat_mutex));
 		pthread_mutex_destroy(&(manager->forks[i]));
 		i++;
 	}
@@ -61,7 +66,7 @@ void	philo_destroy(t_philo_manager *manager)
 
 void	philo_free(t_philo_manager *manager)
 {
-	free (manager->philos);
+	free(manager->philos);
 	free(manager->forks);
 	return ;
 }

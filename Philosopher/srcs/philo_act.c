@@ -6,7 +6,7 @@
 /*   By: junekim <june1171@naver.com>               +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/09/03 19:16:11 by junekim           #+#    #+#             */
-/*   Updated: 2022/09/07 05:03:55 by junekim          ###   ########seoul.kr  */
+/*   Updated: 2022/09/07 06:42:28 by junekim          ###   ########seoul.kr  */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,20 +64,14 @@ static int	philo_eat(t_philo_manager *manager, t_philo *p)
 
 void	philo_act_one(t_philo *p)
 {
-	int	is_die;
-
-	is_die = 0;
-	while (!is_die)
+	philo_fork(p->manager, &(p->manager->forks[p->left]), p);
+	pthread_mutex_unlock(&(p->manager->forks[p->left]));
+	pthread_mutex_lock(&(p->die_mutex));
+	while (!p->is_die)
 	{
-		is_die = philo_fork(p->manager, &(p->manager->forks[p->right]), p);
-		pthread_mutex_unlock(&(p->manager->forks[p->left]));
+		pthread_mutex_unlock(&(p->die_mutex));
+		usleep(1000);
 		pthread_mutex_lock(&(p->die_mutex));
-		while (!p->is_die)
-		{
-			pthread_mutex_unlock(&(p->die_mutex));
-			usleep(1000);
-			pthread_mutex_lock(&(p->die_mutex));
-		}
 	}
 	pthread_mutex_unlock(&(p->die_mutex));
 	return ;
@@ -93,9 +87,7 @@ void	philo_act(t_philo *p)
 	philo_mutex_time(p);
 	p->finish_time = get_time();
 	if (p->num % 2)
-		usleep(p->num * 500);
-	// else if (p->num == p->manager->num_philos)
-	// 	usleep(500);
+		usleep(2000);
 	while (!is_die)
 	{
 		is_die = philo_fork(p->manager, &(p->manager->forks[p->right]), p);
@@ -108,4 +100,3 @@ void	philo_act(t_philo *p)
 	}
 	return ;
 }
-
